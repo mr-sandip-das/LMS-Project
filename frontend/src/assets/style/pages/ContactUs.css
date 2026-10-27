@@ -1,0 +1,551 @@
+
+/* =====================================================
+   CONTACT US PAGE — LMS PROJECT
+   Uses global design tokens from your root CSS
+   ===================================================== */
+
+/* ---------- Common layout ---------- */
+
+.ct-wrap {
+  width: min(var(--container-width), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.ct-section {
+  padding: 76px 0;
+}
+
+.ct-section--alt {
+  background: var(--color-primary-light);
+}
+
+.ct-section p {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Hero section ---------- */
+
+.ct-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 82px 0 96px;
+  color: var(--color-text-on-primary);
+  background: linear-gradient(
+    125deg,
+    var(--color-primary-dark),
+    var(--color-primary) 65%,
+    #315581
+  );
+}
+
+.ct-hero::before,
+.ct-hero::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ct-hero::before {
+  width: 340px;
+  height: 340px;
+  top: -180px;
+  right: 8%;
+}
+
+.ct-hero::after {
+  width: 440px;
+  height: 440px;
+  bottom: -330px;
+  right: 18%;
+}
+
+.ct-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-width);
+}
+
+.ct-crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.ct-crumb a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.ct-crumb a:hover {
+  color: #fff;
+}
+
+.ct-hero h1 {
+  max-width: 720px;
+  margin: 0 0 20px;
+  color: var(--color-text-on-primary);
+  font-size: clamp(2.25rem, 5vw, var(--fs-3xl));
+  font-weight: var(--fw-extrabold);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+.ct-hero__text {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: var(--fs-md);
+  line-height: 1.85;
+}
+
+/* ---------- Contact information + form ---------- */
+
+.ct-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+  align-items: start;
+  gap: 36px;
+}
+
+/* ---------- Left information cards ---------- */
+
+.ct-info {
+  display: grid;
+  gap: 18px;
+}
+
+.ct-info__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.ct-info__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.ct-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-md);
+  font-size: 24px;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.ct-info__card:hover .ct-icon {
+  background: #fff0c9;
+  transform: scale(1.05);
+}
+
+.ct-info__card h3 {
+  margin: 2px 0 8px;
+  color: var(--color-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.ct-info__card p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+}
+
+/* ---------- Contact form card ---------- */
+
+.ct-form-card {
+  padding: 36px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.ct-form-card h2 {
+  margin: 0 0 12px;
+  color: var(--color-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.7px;
+}
+
+.ct-form-card__sub {
+  margin: 0 0 30px;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+}
+
+/* ---------- Form fields ---------- */
+
+.ct-form {
+  display: grid;
+  gap: 22px;
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ct-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ct-field > span {
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.ct-field input,
+.ct-field select,
+.ct-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  font-family: var(--font-main);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.ct-field input,
+.ct-field select {
+  min-height: 52px;
+}
+
+.ct-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.ct-field input::placeholder,
+.ct-field textarea::placeholder {
+  color: #8995a8;
+}
+
+.ct-field input:hover,
+.ct-field select:hover,
+.ct-field textarea:hover {
+  border-color: #a8b8ce;
+}
+
+.ct-field input:focus,
+.ct-field select:focus,
+.ct-field textarea:focus {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(31, 58, 95, 0.1);
+}
+
+.ct-field input:focus-visible,
+.ct-field select:focus-visible,
+.ct-field textarea:focus-visible {
+  outline: none;
+}
+
+/* ---------- Submit button ---------- */
+
+.ct-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  padding: 15px 24px;
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  box-shadow: 0 5px 14px rgba(221, 160, 26, 0.18);
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.ct-submit::after {
+  content: "→";
+  font-size: 20px;
+  transition: transform var(--transition);
+}
+
+.ct-submit:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ct-submit:hover::after {
+  transform: translateX(4px);
+}
+
+.ct-submit:active {
+  transform: translateY(0);
+}
+
+.ct-submit:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ---------- FAQ section ---------- */
+
+.ct-faq {
+  max-width: 900px;
+}
+
+.ct-head {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.ct-head h2 {
+  margin: 0 0 12px;
+  color: var(--color-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.7px;
+}
+
+.ct-head p {
+  margin: 0;
+  font-size: var(--fs-base);
+  line-height: 1.8;
+}
+
+.ct-faq__item {
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.ct-faq__item:hover {
+  border-color: #b7c5d9;
+}
+
+.ct-faq__item[open] {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.ct-faq__item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: 1.6;
+}
+
+.ct-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ct-faq__item summary::after {
+  content: "+";
+  display: grid;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: var(--fw-medium);
+  transition:
+    transform var(--transition),
+    color var(--transition),
+    background var(--transition);
+}
+
+.ct-faq__item[open] summary::after {
+  content: "−";
+  color: var(--color-primary-dark);
+  background: #fff0c9;
+}
+
+.ct-faq__item summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -4px;
+  border-radius: var(--radius-md);
+}
+
+.ct-faq__item > p {
+  margin: 0;
+  padding: 0 24px 24px;
+  font-size: var(--fs-sm);
+  line-height: 1.9;
+}
+
+/* ---------- Responsive: tablets ---------- */
+
+@media (max-width: 900px) {
+  .ct-section {
+    padding: 60px 0;
+  }
+
+  .ct-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .ct-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .ct-info__card {
+    padding: 20px;
+  }
+
+  .ct-form-card {
+    padding: 30px;
+  }
+}
+
+/* ---------- Responsive: mobile ---------- */
+
+@media (max-width: 600px) {
+  .ct-wrap {
+    width: calc(100% - 32px);
+  }
+
+  .ct-hero {
+    padding: 58px 0 66px;
+  }
+
+  .ct-hero h1 {
+    font-size: var(--fs-3xl);
+    letter-spacing: -0.8px;
+  }
+
+  .ct-hero__text {
+    font-size: var(--fs-base);
+    line-height: 1.8;
+  }
+
+  .ct-section {
+    padding: 44px 0;
+  }
+
+  .ct-info {
+    grid-template-columns: 1fr;
+  }
+
+  .ct-info__card {
+    padding: 20px;
+  }
+
+  .ct-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+
+  .ct-form-card {
+    padding: 24px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .ct-form-card h2 {
+    font-size: var(--fs-xl);
+  }
+
+  .ct-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .ct-form {
+    gap: 20px;
+  }
+
+  .ct-head {
+    margin-bottom: 26px;
+  }
+
+  .ct-faq__item summary {
+    padding: 18px 16px;
+    font-size: var(--fs-sm);
+  }
+
+  .ct-faq__item > p {
+    padding: 0 16px 20px;
+  }
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-info__card,
+  .ct-icon,
+  .ct-field input,
+  .ct-field select,
+  .ct-field textarea,
+  .ct-submit,
+  .ct-submit::after,
+  .ct-faq__item {
+    transition: none;
+  }
+
+  .ct-info__card:hover,
+  .ct-submit:hover {
+    transform: none;
+  }
+}

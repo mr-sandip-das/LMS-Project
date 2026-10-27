@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* =====================================================
+   LMS PROJECT – GLOBAL DESIGN TOKENS
+   Import this file ONCE (main.jsx) and use var(--...)
+   everywhere. Change a value here = changes whole site.
+   ===================================================== */
+:root {
+  /* ---------- Brand colors ---------- */
+  --color-primary: #1f3a5f;
+  --color-primary-dark: #152a47;
+  --color-primary-light: #e8eef7;
+  --color-accent: #f2b632;
+  --color-accent-dark: #dda01a;
+
+  /* ---------- Surfaces ---------- */
+  --color-bg: #f6f8fc;
+  --color-surface: #ffffff;
+  --color-border: #dde4ef;
+
+  /* ---------- Text colors ---------- */
+  --color-text: #17233a;
+  --color-text-muted: #5b6b85;
+  --color-text-on-primary: #ffffff;
+
+  /* ---------- Status colors ---------- */
+  --color-success: #1f9d6b;
+  --color-warning: #e89b0c;
+  --color-danger: #d64545;
+
+  /* ---------- Font ---------- */
+  --font-main: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ---------- Text sizes ---------- */
+  --fs-xs: 0.75rem;    /* 12px  small labels */
+  --fs-sm: 0.875rem;   /* 14px  nav links, captions */
+  --fs-base: 1rem;     /* 16px  body text */
+  --fs-md: 1.125rem;   /* 18px  lead text */
+  --fs-lg: 1.25rem;    /* 20px  logo, card titles */
+  --fs-xl: 1.5rem;     /* 24px  h3 */
+  --fs-2xl: 2rem;      /* 32px  h2 */
+  --fs-3xl: 2.75rem;   /* 44px  h1 / hero */
+
+  /* ---------- Font weights ---------- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* ---------- Line heights ---------- */
+  --lh-tight: 1.25;
+  --lh-normal: 1.6;
+
+  /* ---------- Spacing ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 1px 3px rgba(21, 42, 71, 0.08);
+  --shadow-md: 0 8px 24px rgba(21, 42, 71, 0.1);
+  --shadow-lg: 0 16px 40px rgba(21, 42, 71, 0.16);
+
+  /* ---------- Layout ---------- */
+  --container-width: 1200px;
+  --nav-height: 68px;
+  --transition: 0.2s ease;
+}
+
+/* ---------- Base reset (applies to whole project) ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1 { font-size: var(--fs-3xl); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-2xl); line-height: var(--lh-tight); }
+h3 { font-size: var(--fs-xl); line-height: var(--lh-tight); }
+
+a { color: inherit; }
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* Mobile: slightly smaller headings */
+@media (max-width: 600px) {
+  :root {
+    --fs-2xl: 1.625rem;
+    --fs-3xl: 2.125rem;
+  }
+}
