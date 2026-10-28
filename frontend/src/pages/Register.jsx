@@ -1,8 +1,34 @@
 
 import { Link } from "react-router-dom";
 import "../assets/style/pages/Register.css";
+import { useState } from "react";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate=useNavigate();
+
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [domain,setDomain]=useState("");
+
+  const handleSubmit=async (e)=>{
+    e.preventDefault();
+    try {
+      const response=await axios.post("http://localhost:2000/api/auth/register",{
+        name,email,password,domain
+      });
+      setName();
+      setEmail();
+      setPassword();
+      setDomain();
+      navigate("/login");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <main className="register-page">
       <section className="register-card">
@@ -20,16 +46,17 @@ function Register() {
         </div>
 
         {/* Registration Form */}
-        <form className="register-form">
+        <form className="register-form" onSubmit={handleSubmit}>
 
           <div className="register-field">
             <label htmlFor="register-name">Full name</label>
             <input
               type="text"
               id="register-name"
-              name="name"
               placeholder="Enter your full name"
-              autoComplete="name"
+              name="name"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
               required
             />
           </div>
@@ -39,9 +66,10 @@ function Register() {
             <input
               type="email"
               id="register-email"
-              name="email"
               placeholder="Enter your email address"
-              autoComplete="email"
+              name="email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
               required
             />
           </div>
@@ -49,11 +77,12 @@ function Register() {
           <div className="register-field">
             <label htmlFor="register-password">Password</label>
             <input
-              type="password"
+              type="text"
               id="register-password"
-              name="password"
               placeholder="Create a password"
-              autoComplete="new-password"
+              name="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
               required
             />
           </div>
@@ -63,7 +92,8 @@ function Register() {
             <select
               id="register-domain"
               name="domain"
-              defaultValue=""
+              defaultValue={domain}
+              onChange={(e)=>setDomain(e.target.value)}
               required
             >
               <option value="" disabled>

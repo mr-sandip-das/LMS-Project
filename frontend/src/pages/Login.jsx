@@ -1,8 +1,28 @@
 
 import { Link } from "react-router-dom";
 import "../assets/style/pages/Login.css";
+import { useState } from "react";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate=useNavigate();
+  
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+
+  const handleSubmit=async (e)=>{
+    e.preventDefault();
+    try {
+      const response=await axios.post("http://localhost:2000/api/auth/login",{email,password});
+      setEmail("");
+      setPassword("");
+      navigate("/")
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <main className="login-page">
       <section className="login-card">
@@ -17,15 +37,16 @@ function Login() {
           <p>Sign in to continue to your learning account.</p>
         </div>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-field">
             <label htmlFor="email">Email address</label>
             <input
               type="email"
               id="email"
-              name="email"
               placeholder="Enter your email"
-              autoComplete="email"
+              name="email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
               required
             />
           </div>
@@ -37,11 +58,12 @@ function Login() {
             </div>
 
             <input
-              type="password"
+              type="text"
               id="password"
-              name="password"
               placeholder="Enter your password"
-              autoComplete="current-password"
+              name="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
               required
             />
           </div>
