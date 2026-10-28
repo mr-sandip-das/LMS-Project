@@ -4,6 +4,8 @@ import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import Course from './pages/Course.jsx';
 import ContactUs from './pages/ContactUs.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
         <Route path='/about' element={<AboutUs />} />
         <Route path='/course' element={<Course />} />
         <Route path='/contact' element={<ContactUs />} />
-
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
       </Routes>
       </BrowserRouter>

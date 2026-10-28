@@ -1,0 +1,388 @@
+
+/* =====================================
+   REGISTER PAGE — LEARNLOOP LMS
+   Uses global CSS variables
+   ===================================== */
+
+.register-page {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--color-bg);
+  font-family: var(--font-main);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 28px 34px 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Logo ---------- */
+
+.register-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  font-size: 23px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.register-logo__icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--color-text-on-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 21px;
+}
+
+/* ---------- Heading ---------- */
+
+.register-heading {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.register-heading h1 {
+  margin: 0 0 7px;
+  color: var(--color-text);
+  font-size: 27px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.7px;
+  line-height: 1.35;
+}
+
+.register-heading p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+/* ---------- Form ---------- */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.register-field label {
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+}
+
+.register-field input,
+.register-field select {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-family: var(--font-main);
+  font-size: var(--fs-sm);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.register-field input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.75;
+}
+
+.register-field select {
+  cursor: pointer;
+}
+
+.register-field input:hover,
+.register-field select:hover {
+  border-color: #aab8ca;
+}
+
+.register-field input:focus,
+.register-field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(31, 58, 95, 0.09);
+}
+
+/* ---------- Terms checkbox ---------- */
+
+.register-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 2px;
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.register-terms input {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  margin: 3px 0 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.register-terms a {
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.register-terms a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+/* ---------- Submit button ---------- */
+
+.register-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 46px;
+  margin-top: 2px;
+  color: var(--color-text-on-primary);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.register-submit span {
+  font-size: 20px;
+  transition: transform var(--transition);
+}
+
+.register-submit:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.register-submit:hover span {
+  transform: translateX(4px);
+}
+
+.register-submit:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Footer ---------- */
+
+.register-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.register-footer p {
+  margin: 0 0 12px;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.register-footer p a {
+  color: var(--color-primary);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+}
+
+.register-footer p a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+.register-footer > span {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+  .register-page {
+    min-height: 100vh;
+    padding: 18px 14px;
+  }
+
+  .register-card {
+    padding: 24px 20px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .register-logo {
+    margin-bottom: 18px;
+    font-size: 21px;
+  }
+
+  .register-heading h1 {
+    font-size: 24px;
+  }
+
+  .register-form {
+    gap: 14px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .register-field input,
+  .register-field select,
+  .register-submit,
+  .register-submit span {
+    transition: none;
+  }
+}
+
+
+/* ---------- Register page layout ---------- */
+
+.register-page {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--color-bg);
+  font-family: var(--font-main);
+}
+
+/* Wider card with less padding */
+
+.register-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 22px 38px 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Reduce logo spacing */
+
+.register-logo {
+  margin-bottom: 12px;
+}
+
+/* Reduce heading height */
+
+.register-heading {
+  margin-bottom: 16px;
+}
+
+.register-heading h1 {
+  margin: 0 0 5px;
+  font-size: 26px;
+}
+
+.register-heading p {
+  margin: 0;
+  font-size: var(--fs-sm);
+}
+
+/* Compact form spacing */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.register-field input,
+.register-field select {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+}
+
+/* Shorter checkbox and button spacing */
+
+.register-terms {
+  margin-top: 0;
+  line-height: 1.6;
+}
+
+.register-submit {
+  height: 42px;
+  margin-top: 0;
+}
+
+/* Reduce footer height */
+
+.register-footer {
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+.register-footer p {
+  margin-bottom: 8px;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+  .register-page {
+    padding: 16px;
+  }
+
+  .register-card {
+    max-width: 100%;
+    padding: 22px 20px 18px;
+  }
+
+  .register-heading h1 {
+    font-size: 24px;
+  }
+
+  .register-form {
+    gap: 13px;
+  }
+}
+
