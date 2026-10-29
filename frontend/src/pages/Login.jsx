@@ -4,6 +4,7 @@ import "../assets/style/pages/Login.css";
 import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import toasr from "react-hot-toast";
 
 function Login() {
   const navigate=useNavigate();
@@ -15,9 +16,19 @@ function Login() {
     e.preventDefault();
     try {
       const response=await axios.post("http://localhost:2000/api/auth/login",{email,password});
+      
+      
+      if(response.data.success){
+      toasr.success(response.data.message);
       setEmail("");
       setPassword("");
-      navigate("/")
+      navigate("/");
+      }
+      else{
+          toasr.error(response.data.message);
+      }
+
+      
       
     } catch (error) {
       console.log(error.message);

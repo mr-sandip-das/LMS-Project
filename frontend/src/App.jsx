@@ -6,11 +6,13 @@ import Course from './pages/Course.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import {Toaster} from "react-hot-toast";
 
 
 function App() {
   return (
-  
+    <>
+      <Toaster position='top-right' />
       <BrowserRouter>
       <Routes>
 
@@ -24,7 +26,9 @@ function App() {
       </Routes>
       </BrowserRouter>
   
+  </>
   )
 }
+
 
 export default App

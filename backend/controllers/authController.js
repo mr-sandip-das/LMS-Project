@@ -1,12 +1,13 @@
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
+import jwt from "jsonwebtoken"
 
 const registerUser = async (req,resp)=>{
 try {
     const {name,email,password,domain}=req.body;
 
     if(!name || !email || !password || !domain ){
-        return resp.status(400).json({
+        return resp.json({
             message:"All fields are required",
             success:false
         });
@@ -17,7 +18,7 @@ try {
     });
 
     if(exixtUser){
-        return resp.status(400).json({
+        return resp.json({
             message:"Email already registered",
             success:false
         })
@@ -29,6 +30,14 @@ try {
         name,email,password:convertPassword,domain
     });
 
+    // create jwt Token
+    const token=jwt.sign(
+        {userId:newUser._id},
+        process.env.JWT_SECRET_KEY,
+        {expiresIn:process.env.JWT_EXPIRES_IN}
+    );
+    resp.cookie("jwtToken",token);
+    
     return resp.status(201).json({
         success:true,
         message:"Registration successful",
@@ -37,20 +46,18 @@ try {
             name:newUser.name,
             email:newUser.email,
             domain:newUser.domain,
-            createdAt:newUser.createdAt
+            createdAt:newUser.createdAt,
+
         }
     });
 
+} catch (error) {
     console.error("Registration error:", error.message);
 
     return resp.status(500).json({
       success: false,
       message: "Internal server error",
     });
-    
-
-} catch (error) {
-    
 }
 };
 
@@ -58,7 +65,7 @@ const loginUser=async (req,resp)=>{
     try {
         const {email,password}=req.body;
         if (!email || !password){
-            return resp.status(400).json({
+            return resp.json({
                 success:false,
                 message:"Email and password are required"
             });
@@ -69,7 +76,7 @@ const loginUser=async (req,resp)=>{
         });
 
         if(!user){
-            return resp.status(400).json({
+            return resp.json({
                 success:false,
                 message:"Invalid email or password"
             });
@@ -77,12 +84,19 @@ const loginUser=async (req,resp)=>{
 
         const rightPassword=await bcrypt.compare(password,user.password);
         if (!rightPassword){
-            return resp.status(400).json({
+            return resp.json({
                 success:false,
                 message:"Invalid password"
             });
         }
 
+        // create jwt Token
+    const token=jwt.sign(
+        {id:newUser._id},
+        process.env.JWT_SECRET_KEY,
+        {expiresIn:process.env.JWT_EXPIRES_IN}
+    );
+    resp.cookie("jwtToken",token);
         return resp.status(200).json({
             success:true,
             message:"Login successful",
@@ -101,4 +115,26 @@ const loginUser=async (req,resp)=>{
     }
 }
 
-export {registerUser,loginUser};
+const logoutUser=(req,resp)=>{
+ try {
+    resp.clearCookie(
+       "jwtToken",
+       {
+           httpOnly:true,
+           secure:true
+       }
+   
+    );
+    return resp.status(201).json({
+       message:"User logout Successful",
+       success:true
+    })
+ } catch (error) {
+    return resp.status(400).json({
+        message:error.message,
+        success:false
+    })
+ }
+};
+
+export {registerUser,loginUser,logoutUser};

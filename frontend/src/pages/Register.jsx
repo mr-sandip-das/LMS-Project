@@ -4,6 +4,7 @@ import "../assets/style/pages/Register.css";
 import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import toasr from "react-hot-toast";
 
 function Register() {
   const navigate=useNavigate();
@@ -19,11 +20,20 @@ function Register() {
       const response=await axios.post("http://localhost:2000/api/auth/register",{
         name,email,password,domain
       });
+      console.log(response);
+      if (response.data.success){
+        
       setName();
       setEmail();
       setPassword();
       setDomain();
+      toasr.success(response.data.message);
       navigate("/login");
+      }
+      else{
+        toasr.error(response.data.message);
+      }
+      
     } catch (error) {
       console.log(error.message);
     }
